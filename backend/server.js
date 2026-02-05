@@ -10,10 +10,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://pulse-blush-zeta.vercel.app",
-    ],
+    origin: '*',
     credentials: true,
   })
 );
