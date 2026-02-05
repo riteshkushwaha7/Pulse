@@ -18,7 +18,7 @@ export default function FeedPage() {
   const fetchPosts = async (pageNum = 1, append = false) => {
     setLoading(true);
     try {
-      const res = await axios.get(`/posts?page=${pageNum}&limit=10`);
+      const res = await axios.get(`/api/posts?page=${pageNum}&limit=10`);
       if (append) {
         setPosts(prev => [...prev, ...res.data.posts]);
       } else {
