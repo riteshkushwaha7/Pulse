@@ -51,6 +51,10 @@ try {
   console.error("🔥 POST ROUTE LOAD FAILED:", err);
 }
 
+// Mount routers only if successfully loaded
+if (authRoutes) app.use('/api/auth', authRoutes);
+if (postRoutes) app.use('/api/posts', postRoutes);
+
 
 // Health Check
 app.get('/health', (req, res) => {
