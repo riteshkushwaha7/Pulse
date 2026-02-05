@@ -40,7 +40,7 @@ export default function AuthPage() {
     try {
       if (tab === 0) {
         // Login
-        const res = await axios.post('/auth/login', {
+        const res = await axios.post('/api/auth/login', {
           email: form.email,
           password: form.password,
         });
@@ -48,7 +48,7 @@ export default function AuthPage() {
         navigate('/');
       } else {
         // Signup
-        const res = await axios.post('/auth/signup', {
+        const res = await axios.post('/api/auth/signup', {
           username: form.username,
           email: form.email,
           password: form.password,
