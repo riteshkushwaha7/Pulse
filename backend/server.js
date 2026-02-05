@@ -1,8 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const authRoutes = require('./routes/authRoutes');
-const postRoutes = require('./routes/postRoutes');
+
 const errorHandler = require('./middleware/errorHandler');
 const cors = require("cors");
 
@@ -36,8 +35,22 @@ mongoose.connect(process.env.MONGODB_URI, {
 });
 
 // Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/posts', postRoutes);
+let authRoutes;
+try {
+  authRoutes = require('./routes/authRoutes');
+  console.log("✅ authRoutes loaded successfully");
+} catch (err) {
+  console.error("🔥 AUTH ROUTE LOAD FAILED:", err);
+}
+
+let postRoutes;
+try {
+  postRoutes = require('./routes/postRoutes');
+  console.log("✅ postRoutes loaded successfully");
+} catch (err) {
+  console.error("🔥 POST ROUTE LOAD FAILED:", err);
+}
+
 
 // Health Check
 app.get('/health', (req, res) => {
