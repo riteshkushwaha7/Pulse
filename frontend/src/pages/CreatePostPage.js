@@ -12,7 +12,7 @@ export default function CreatePostPage() {
   const navigate = useNavigate();
 
   const handleCreate = async ({ text, imageUrl }) => {
-    await axios.post('/posts', { text, imageUrl });
+    await axios.post('/api/posts', { text, imageUrl });
     navigate('/');
   };
 
